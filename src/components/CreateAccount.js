@@ -56,8 +56,8 @@ export class CreateAccount extends Component {
             <input ref={self => this.password1Input = self} onKeyDown={() => this.verifyMatchingPasswords()} className='form-control' id='password1'/>
           </div>
           {this.state.error ? <small> {this.state.error}</small> : ''}
-          <br/>
           <button className='btn btn-success'>Submit</button>
+          <br/>
         </form>
       </section>
     )
