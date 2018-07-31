@@ -1,6 +1,7 @@
 //================================== Import Dependencies ====================>
 import React, {Component} from 'react';
 import './styles/Header.css';
+import {Link} from 'react-router-dom';
 
 export class Header extends Component {
 
@@ -11,12 +12,12 @@ export class Header extends Component {
 
       <header className='header-container'>
           <div className='app-title'>
-            Duelingo
+            <Link to='/'> Duelingo</Link>
           </div>
           <div className='app-menu'>
             <ul>
               <li>Login</li>
-              <li>Register</li>
+              <li><Link  to='/register'>Register</Link></li>
             </ul>
           </div>
       </header>
