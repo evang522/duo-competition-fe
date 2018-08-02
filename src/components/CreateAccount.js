@@ -27,9 +27,26 @@ export class CreateAccount extends Component {
         })
       }
     }
-    // const check = () => console.log('hi');
 
     this.timer = setTimeout(checkPasswords, 500);
+  }
+
+  verifyEmail = () => {
+    clearTimeout(this.emailTimer);
+    const checkEmail = () => {
+      if (!this.emailInput.value.includes('@') || !this.emailInput.value.includes('.') || !this.emailInput.value[this.emailInput.value.indexOf('.') +1] || !this.emailInput.value[this.emailInput.value.indexOf('@') -1]) {
+        console.log('setting error');
+        this.setState({
+          error: 'Invalid Email'
+        });
+      } else {
+        this.setState({
+          error:null
+        })
+      }
+    }
+
+    this.emailTimer = setTimeout(checkEmail, 700);
   }
 
 
@@ -45,17 +62,17 @@ export class CreateAccount extends Component {
           </div>
           <div className='form-group'>
             <label htmlFor='email'>Email</label>
-            <input ref={self => this.emailInput = self} className='form-control' id='email'/>
+            <input ref={self => this.emailInput = self} className='form-control' onKeyDown={() => this.verifyEmail()} id='email'/>
           </div>
           <div className='form-group' >
             <label htmlFor='password'>Password</label>
-            <input ref={self => this.passwordInput = self} onKeyDown={() => this.verifyMatchingPasswords()} className='form-control' id='password'/>
+            <input ref={self => this.passwordInput = self} onKeyDown={() => this.verifyMatchingPasswords()} className='form-control' id='password' type='password'/>
           </div>
           <div className='form-group'>
             <label htmlFor='password1'>Verify Password</label>
-            <input ref={self => this.password1Input = self} onKeyDown={() => this.verifyMatchingPasswords()} className='form-control' id='password1'/>
+            <input ref={self => this.password1Input = self}  type='password' onKeyDown={() => this.verifyMatchingPasswords()} className='form-control' id='password1'/>
+          {this.state.error ? <small className='redText'> {this.state.error}</small> : ''}
           </div>
-          {this.state.error ? <small> {this.state.error}</small> : ''}
           <button className='btn btn-success'>Submit</button>
           <br/>
         </form>

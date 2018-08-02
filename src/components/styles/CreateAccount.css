@@ -7,3 +7,11 @@
   width:80%;
   margin:0 auto;
 }
+
+.redText {
+  color:red;
+}
+
+.create-account-container  input {
+  text-align:center;
+}
