@@ -1,0 +1,53 @@
+.verify-duo-container {
+ margin:0 auto;
+  margin-top:5rem;
+  text-align:center;
+  width:95%;
+}
+
+
+.verify-duo-step1 img {
+  width:5rem;
+  margin-top:2rem;
+  margin-bottom:2rem;
+}
+
+.verify-duo-step1 p {
+  margin:0 auto;
+  width:90%;
+}
+
+.continue-button {
+  margin-top:2rem;
+}
+
+.duo-username-input {
+  width:25rem;
+  margin-top:4rem;
+  border-radius:6px;
+  border:none;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.265);
+  height:2.5rem;
+  outline:none;
+  padding:4px;
+  text-align:center;
+}
+
+
+.code-box {
+  margin:0 auto;
+  margin-top:3rem;
+  background-color:white;
+  padding:1rem;
+  width:15rem;
+  box-shadow:1px 1px 4px rgba(0, 0, 0, 0.293);
+  border-radius:4px;
+  font-weight:bold;
+}
+
+.instructions-step3 {
+  margin:0 auto;
+  margin-top:2rem;
+  width:95%;
+  
+}

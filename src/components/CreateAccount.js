@@ -1,7 +1,9 @@
 //================== Import Dependencies ================>
 import React, {Component} from 'react';
 import './styles/CreateAccount.css';
-
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+import {register,  setSuccessfulAccountCreation} from '../state/actions/users.actions';
 //=================== Create Account ====================>
 
 export class CreateAccount extends Component {
@@ -50,12 +52,30 @@ export class CreateAccount extends Component {
   }
 
 
+  submitForm = e => {
+    e.preventDefault();
+
+    // this.verifyEmail();
+    // this.verifyMatchingPasswords();
+
+    if (!this.state.error && this.nameInput.value && this.emailInput.value && this.passwordInput.value) {
+      this.props.dispatch(register(this.nameInput.value,this.emailInput.value, this.passwordInput.value));
+
+      //Clear Inputs
+      this.emailInput.value = '';
+      this.password1Input.value = '';
+      this.passwordInput.value = '';
+      this.nameInput.value = '';
+      this.props.dispatch(setSuccessfulAccountCreation());
+    }
+  }
+
   render() {
 
     return (
       <section className='create-account-container'>
         <h1>Let's Get Started with Duelingo!</h1>
-        <form className='create-account-form'>
+        <form onSubmit={e => this.submitForm(e)} className='create-account-form'>
           <div className='form-group'>
             <label htmlFor='name'>Name</label>
             <input ref={self => this.nameInput = self} className='form-control' id='name'/>
@@ -76,7 +96,17 @@ export class CreateAccount extends Component {
           <button className='btn btn-success'>Submit</button>
           <br/>
         </form>
+        {this.props.userInfo ? <Redirect to='/' /> : ''}
+        {this.props.accountCreateSuccess ? <Redirect to='/login' /> : ''}
       </section>
     )
   }
 }
+
+
+const mstp = s => ({
+  userInfo: s.users.userInfo,
+  accountCreateSuccess: s.users.successfulAccountCreation
+})
+
+export default connect(mstp)(CreateAccount);
