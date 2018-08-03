@@ -1,0 +1,33 @@
+.user-console-container {
+  margin-top:4rem;
+}
+
+.console-navbar {
+  margin:0 auto;
+  background-color:rgb(44, 44, 96);
+  width:90%;
+  color:white;
+  border-radius:1rem;
+  padding:.4rem;
+}
+
+.console-navbar ul {
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  margin:0 auto;
+}
+
+.console-navbar li {
+  padding-left:.5rem;
+  padding-right:.5rem;
+  margin-left:1rem;
+  margin-right:1rem;
+  border-radius:.3rem;
+  cursor:pointer;
+}
+
+.selected-console-option {
+  background-color:white;
+  color:black;
+}

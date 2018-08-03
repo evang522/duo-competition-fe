@@ -7,13 +7,14 @@ import CreateAccount  from './components/CreateAccount';
 import RegisterSuccess from './components/RegisterSuccess';
 import Login from './components/Login';
 import VerifyDuoAccount from './components/VerifyDuoAccount';
+import Landing_ConsoleHOC from './components/Landing_ConsoleHOC'; 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header/>
-        <Route exact path='/' component={LandingPage} />
+        <Route exact path='/' component={Landing_ConsoleHOC} />
         <Route exact path='/register' component={CreateAccount} />
         <Route exact path='/registersuccess' component={RegisterSuccess} />
         <Route exact path='/login' component={Login}/>

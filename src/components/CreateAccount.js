@@ -62,10 +62,10 @@ export class CreateAccount extends Component {
       this.props.dispatch(register(this.nameInput.value,this.emailInput.value, this.passwordInput.value));
 
       //Clear Inputs
-      this.emailInput.value = '';
-      this.password1Input.value = '';
-      this.passwordInput.value = '';
-      this.nameInput.value = '';
+      this.emailInput.value = ' ';
+      this.password1Input.value = ' ';
+      this.passwordInput.value = ' ';
+      this.nameInput.value = ' ';
       this.props.dispatch(setSuccessfulAccountCreation());
     }
   }

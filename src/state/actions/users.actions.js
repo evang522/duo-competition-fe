@@ -45,7 +45,7 @@ export const setVerificationResult = result => ({
 //================================== ASYNC Actions ====================>
 
 
-export const login = (email, password) => dispatch => {
+export const login = (email, password) => (dispatch,store) => {
 
   const user = {
     email,
@@ -104,12 +104,12 @@ export const register = (name, email, password) => dispatch => {
 }
 
 //================================== Generate DUO ID ====================>
-export const generateDuoId = userId => dispatch => {
+export const generateDuoId = userId => (dispatch,getState) => {
   const query = {
     url: `${API_URL}/api/users/${userId}?action=verifyDuoAccount&step=generateId`,
     headers: {
       'content-type':'application/json',
-      // TODO ADD AUTHENTICATION HEADER
+      'Authentication':`Bearer ${getState().user.authToken}`
     },
     method:'PUT'
   }
@@ -124,13 +124,13 @@ export const generateDuoId = userId => dispatch => {
 
 }
 
-export const verifyDuoCode = (duoUsername,userId) => dispatch => {
+export const verifyDuoCode = (duoUsername,userId) => (dispatch,getState) => {
   const query = {
     url: `${API_URL}/api/users/${userId}?action=verifyDuoAccount&step=verifyId`,
     data: JSON.stringify({duoUsername}),
     method: 'PUT',
     headers: {
-      //TODO ADD AUTHENTICATION HEADER
+      'Authentication':`Bearer ${getState().user.authToken}`,
       'content-type':'application/json'
     }
   }
