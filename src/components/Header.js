@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import './styles/Header.css';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 export class Header extends Component {
 
@@ -16,8 +17,11 @@ export class Header extends Component {
           </div>
           <div className='app-menu'>
             <ul>
+              {this.props.loggedIn ? '' : 
+              <div>
               <li><Link to='/login'>Login</Link></li>
-              <li><Link  to='/register'>Register</Link></li>
+              <li><Link  to='/register'>Register</Link></li> 
+              </div>}
             </ul>
           </div>
       </header>
@@ -25,4 +29,8 @@ export class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  loggedIn: state.users.authToken
+})
+
+export default connect(mapStateToProps)(Header);

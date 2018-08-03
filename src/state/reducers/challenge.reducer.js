@@ -4,7 +4,8 @@ const initialState = {
 
   currentChallenge: null,
   challengeSearchResults:[],
-  challengeComments:[]
+  challengeComments:[],
+  userChallenges:[]
 
 }
 

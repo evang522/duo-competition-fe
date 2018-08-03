@@ -36,6 +36,11 @@ export const saveTempDuoId = id => ({
   id
 })
 
+export const SET_VERIFICATION_RESULT = 'SET_VERIFICATION_RESULT';
+export const setVerificationResult = result => ({
+  type:SET_VERIFICATION_RESULT,
+  result
+})
 
 //================================== ASYNC Actions ====================>
 
@@ -132,10 +137,11 @@ export const verifyDuoCode = (duoUsername,userId) => dispatch => {
 
   axios(query)
     .then(response => {
-      if (response.status === 200) {
-        if (response.data.verification === 'success') {
+        if (response.data.verificationStatus === 'success') {
+          dispatch(setVerificationResult('success'));
           dispatch(setUserVerified());
-        }
+      } else {
+        dispatch(setVerificationResult('failure'));
       }
     })
     .catch(err => {

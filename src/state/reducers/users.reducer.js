@@ -1,5 +1,5 @@
 //============================================ Import Dependencies ======================================>
-import {STORE_USER_INFO, SET_SUCCESSFUL_ACCOUNT_CREATION, SAVE_DUOLINGO_USERNAME_STATE, SAVE_TEMP_DUO_ID, SET_USER_VERIFIED} from '../actions/users.actions';
+import {STORE_USER_INFO, SET_SUCCESSFUL_ACCOUNT_CREATION, SAVE_DUOLINGO_USERNAME_STATE, SAVE_TEMP_DUO_ID, SET_USER_VERIFIED, SET_VERIFICATION_RESULT} from '../actions/users.actions';
 import jwt from 'jsonwebtoken';
 
 
@@ -10,6 +10,7 @@ const initialState = {
   verification:{
     duoUsername:null,
     tempCode:null,
+    result:null
 
   }
 
@@ -24,6 +25,18 @@ const userReducer = (state=initialState, action) => {
       ...state, 
       successfulAccountCreation: true
     }
+  
+  //=================
+    case SET_VERIFICATION_RESULT:
+      return {
+        ...state,
+        verification: {
+          ...state.verification,
+          result:action.result
+        }
+      }
+
+
 
   //================
     case SET_USER_VERIFIED:

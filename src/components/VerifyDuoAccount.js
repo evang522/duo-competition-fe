@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './styles/VerifyDuoAccount.css';
 import { saveDuolingoUsernameState, generateDuoId, verifyDuoCode } from '../state/actions/users.actions';
 import {connect} from  'react-redux';
-import {Link} from 'react-router-dom';
+import VerificationResult from './VerificationResult';
 
 //================================== VerifyDuoAccount ====================>
 
@@ -15,7 +15,7 @@ export class VerifyDuoAccount extends Component {
     super(props);
 
     this.state = {
-      step:1
+      step:1,
     }
   }
   
@@ -31,6 +31,12 @@ export class VerifyDuoAccount extends Component {
     let currentStep = this.state.step;
     this.setState({
       step: currentStep-1
+    })
+  }
+
+  resetStep = ()  => {
+    this.setState({
+      step:1
     })
   }
 
@@ -86,22 +92,12 @@ export class VerifyDuoAccount extends Component {
       </div>
     )
 
-    const Step4 = () => (
-      <div className='verify-duo-success'>
-        <h2>Congrats!</h2>
-        <br/>
-        <p> According to Duolingo, you're legit!</p>
-        <Link to='/'><button className='btn primary-button'>Get Started</button></Link>
-      </div>
-    )
-    
-
     return (
       <section className='verify-duo-container'>
         {this.state.step === 1 ? <Step1/> : ''}
         {this.state.step === 2 ? <Step2/> : ''}
-        {(this.state.step === 3 || this.state.step === 4) && !this.props.verified ? <Step3/> : ''}
-        {this.state.step === 4 && this.props.verified ? <Step4 /> : ''}
+        {this.state.step === 3 ? <Step3/> : ''}
+        {this.state.step === 4 ? <VerificationResult resetStep={this.resetStep}/> : ''}
       </section>
     )
   }
