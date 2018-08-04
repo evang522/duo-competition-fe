@@ -22,12 +22,12 @@ export const fetchUserChallenges = () => (dispatch,getState) => {
       'method':'GET',
       'headers': {
         'content-type':'application/json',
-        'Authentication':`Bearer ${getState().users.authToken}`
+        'Authorization':`Bearer ${getState().users.authToken}`
       }
     }
 
     axios(query)
       .then(response => {
-        console.log(response.data);
+        dispatch(storeUserChallenges(response.data));
       })
 }

@@ -109,7 +109,7 @@ export const generateDuoId = userId => (dispatch,getState) => {
     url: `${API_URL}/api/users/${userId}?action=verifyDuoAccount&step=generateId`,
     headers: {
       'content-type':'application/json',
-      'Authentication':`Bearer ${getState().user.authToken}`
+      'Authorization':`Bearer ${getState().users.authToken}`
     },
     method:'PUT'
   }
@@ -130,7 +130,7 @@ export const verifyDuoCode = (duoUsername,userId) => (dispatch,getState) => {
     data: JSON.stringify({duoUsername}),
     method: 'PUT',
     headers: {
-      'Authentication':`Bearer ${getState().user.authToken}`,
+      'Authorization':`Bearer ${getState().users.authToken}`,
       'content-type':'application/json'
     }
   }

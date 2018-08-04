@@ -4,7 +4,6 @@ import LandingPage from './LandingPage';
 import UserConsole from './UserConsole';
 import { connect } from 'react-redux';
 
-
 //================================== Landing Page Console HOC ====================>
 export class LandingConsoleHOC extends React.Component {
   render() {
