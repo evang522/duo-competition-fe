@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './styles/Console_Challenges.css';
-import {fetchUserChallenges} from '../state/actions/challenges.actions';
+import {fetchUserChallenges} from '../state/challenges/challenges.index';
 import SearchForChallenges from '../components/SearchForChallenges';
 
 export const ChallengeBox = props => (

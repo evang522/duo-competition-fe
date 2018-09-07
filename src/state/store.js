@@ -1,8 +1,12 @@
 //============================================ Import Dependencies ======================================>
-import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { 
+  applyMiddleware,
+  createStore,
+  combineReducers
+ } from 'redux';
 import thunk from 'redux-thunk';
-import userReducer from './reducers/users.reducer';
-import challengeReducer from './reducers/challenge.reducer';
+import {userReducer} from './users/users.index';
+import {challengeReducer} from './challenges/challenges.index';
 
 //================================== Construct State ====================>
 

@@ -1,7 +1,6 @@
 //============================================ Import Dependencies ======================================>
-import {STORE_USER_INFO, SET_SUCCESSFUL_ACCOUNT_CREATION, SAVE_DUOLINGO_USERNAME_STATE, SAVE_TEMP_DUO_ID, SET_USER_VERIFIED, SET_VERIFICATION_RESULT} from '../actions/users.actions';
+import * as types from './users.types';
 import jwt from 'jsonwebtoken';
-
 
 const initialState = {
   authToken:localStorage.getItem('authToken') || null,
@@ -11,23 +10,21 @@ const initialState = {
     duoUsername:null,
     tempCode:null,
     result:null
-
   }
-
 }
 
 const userReducer = (state=initialState, action) => {
 
   switch(action.type) {
   //================
-    case SET_SUCCESSFUL_ACCOUNT_CREATION:
+    case types.SET_SUCCESSFUL_ACCOUNT_CREATION:
     return {
       ...state, 
       successfulAccountCreation: true
     }
   
   //=================
-    case SET_VERIFICATION_RESULT:
+    case types.SET_VERIFICATION_RESULT:
       return {
         ...state,
         verification: {
@@ -39,7 +36,7 @@ const userReducer = (state=initialState, action) => {
 
 
   //================
-    case SET_USER_VERIFIED:
+    case types.SET_USER_VERIFIED:
     return {
       ...state,
       userInfo: {
@@ -49,7 +46,7 @@ const userReducer = (state=initialState, action) => {
     }
   
   //================
-    case SAVE_TEMP_DUO_ID:
+    case types.SAVE_TEMP_DUO_ID:
       return {
         ...state,
         verification: {
@@ -59,7 +56,7 @@ const userReducer = (state=initialState, action) => {
       }
 
   //==============
-  case SAVE_DUOLINGO_USERNAME_STATE:
+  case types.SAVE_DUOLINGO_USERNAME_STATE:
   {
     return {
       ...state, 
@@ -71,7 +68,7 @@ const userReducer = (state=initialState, action) => {
   }
 
   //===============
-  case STORE_USER_INFO:
+  case types.STORE_USER_INFO:
     return {
       ...state,
       userInfo: action.userInfo,
